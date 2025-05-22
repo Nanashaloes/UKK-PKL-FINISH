@@ -1,77 +1,100 @@
-<div class="p-6 max-w-3xl mx-auto bg-white shadow-lg rounded-lg">
-    <h2 class="text-2xl font-semibold mb-6 text-center">{{ $id ? 'Edit Siswa' : 'Tambah Siswa' }}</h2>
+<div class="p-6 max-w-3xl mx-auto bg-white shadow-md rounded-lg text-sm">
+    <h2 class="text-xl font-semibold mb-4 text-center text-blue-700">
+        {{ $id ? 'Edit Siswa' : 'Tambah Siswa' }}
+    </h2>
 
-    <form wire:submit.prevent="save" class="space-y-6">
+    <form wire:submit.prevent="save" class="space-y-4">
+
         <!-- Foto -->
         <div>
-            <label class="block text-gray-700 text-sm font-bold mb-2">Foto Siswa</label>
-            <input type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" wire:model="foto">
-            @error('foto') <span class="text-red-500">{{ $message }}</span>@enderror
+            <label class="block text-gray-700 font-semibold mb-1 text-sm">Foto Siswa</label>
+            <input type="file" wire:model="foto"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800" />
+            @error('foto') <span class="text-red-500 text-xs">{{ $message }}</span>@enderror
         </div>
-        
+
         <!-- Nama -->
         <div>
-            <label class="block text-sm font-medium text-gray-700">Nama</label>
-            <input type="text" wire:model="nama" class="w-full border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            @error('nama') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Nama</label>
+            <input type="text" wire:model="nama"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800" />
+            @error('nama') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- NIS -->
         <div>
-            <label class="block text-sm font-medium text-gray-700">NIS</label>
-            <input type="text" wire:model="nis" class="w-full border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            @error('nis') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">NIS</label>
+            <input type="text" wire:model="nis"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800" />
+            @error('nis') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- Gender -->
         <div>
-            <label class="block text-sm font-medium text-gray-700 my-2">Gender</label>
-            <flux:radio.group wire:model="gender">
-                <flux:radio value="L" label="Laki Laki" />
-                <flux:radio value="P" label="Perempuan" />
-            </flux:radio.group>
-            @error('gender') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Gender</label>
+            <div class="flex gap-6 mt-1">
+                <label class="inline-flex items-center">
+                    <input type="radio" wire:model="gender" value="L" class="form-radio text-blue-600" />
+                    <span class="ml-2 text-gray-700 text-sm">Laki Laki</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" wire:model="gender" value="P" class="form-radio text-blue-600" />
+                    <span class="ml-2 text-gray-700 text-sm">Perempuan</span>
+                </label>
+            </div>
+            @error('gender') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- Alamat -->
         <div>
-            <label class="block text-sm font-medium text-gray-700">Alamat</label>
-            <textarea wire:model="alamat" class="w-full border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="2"></textarea>
-            @error('alamat') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Alamat</label>
+            <textarea wire:model="alamat" rows="2"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800"></textarea>
+            @error('alamat') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- Kontak -->
         <div>
-            <label class="block text-sm font-medium text-gray-700">Kontak</label>
-            <input type="text" wire:model="kontak" class="w-full border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            @error('kontak') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Kontak</label>
+            <input type="text" wire:model="kontak"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800" />
+            @error('kontak') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- Email -->
         <div>
-            <label class="block text-sm font-medium text-gray-700">Email</label>
-            <input type="email" wire:model="email" class="w-full border border-gray-300 rounded-md px-4 py-2 mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Email</label>
+            <input type="email" wire:model="email"
+                class="w-full px-3 py-2 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-gray-800" />
+            @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
         <!-- Status PKL -->
+        <!-- Status PKL -->
         <div>
-            <label class="block text-sm font-medium text-gray-700 my-2">Status PKL</label>
-            <flux:radio.group wire:model="status_pkl">
-                <flux:radio value="false" label="Belum diterima PKL" />
-                <flux:radio value="true" label="Sudah diterima PKL" />
-            </flux:radio.group>
-            @error('status_pkl') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <label class="block text-gray-700 mb-1">Status PKL</label>
+            <div class="flex gap-6 mt-1">
+                <label class="inline-flex items-center">
+                    <input type="radio" wire:model="status_pkl" value="0" class="form-radio text-blue-600" />
+                    <span class="ml-2 text-gray-700 text-sm">Belum diterima PKL</span>
+                </label>
+                <label class="inline-flex items-center">
+                    <input type="radio" wire:model="status_pkl" value="1" class="form-radio text-blue-600" />
+                    <span class="ml-2 text-gray-700 text-sm">Sudah diterima PKL</span>
+                </label>
+            </div>
+            @error('status_pkl') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
         </div>
 
-        <div class="flex justify-between">
-            <!-- Cancel Button -->
-            <a href="{{ route('siswa') }}" class="inline-block bg-gray-500 text-white px-6 py-3 rounded-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500 transition duration-200">
-                Cancel
+
+        <div class="flex justify-end space-x-3 pt-4">
+            <a href="{{ route('siswa') }}"
+                class="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
+                Batal
             </a>
 
-            <!-- Submit Button -->
-            <button type="submit" class="bg-blue-600 cursor-pointer text-white px-6 py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+            <button type="submit"
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 Simpan
             </button>
         </div>

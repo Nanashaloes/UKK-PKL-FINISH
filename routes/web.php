@@ -12,13 +12,14 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Siswa\Form;
 use App\Livewire\Siswa\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified', 'check.roles'])
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
     ->name('dashboard');
 
 Route::view('siswa', 'siswa')
@@ -40,11 +41,14 @@ Route::view('pkl', 'pkl')
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/siswa/create', \App\Livewire\Siswa\Form::class)->name('siswa.create');
+});
     // CRUD Siswa Livewire
     Route::get('/siswa/show/{id}', View::class)->name('siswa.show');
     Route::get('/siswa/create', Form::class)->name('siswa.create');
     Route::get('/siswa/edit/{id}', Form::class)->name('siswa.edit');
-   
+
     // CRUD Guru Livewire
     Route::get('/guru/show/{id}', GuruView::class)->name('guru.show');
     Route::get('/guru/create', GuruForm::class)->name('guru.create');

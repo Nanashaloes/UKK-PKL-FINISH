@@ -1,8 +1,8 @@
-<x-layouts.app>
-    <flux:heading size="xl" level="1">{{ __('Tabel Guru') }}</flux:heading>
-    <flux:subheading size="lg" class="mb-4">{{ __('Pantau data guru disini') }}</flux:subheading>
-
-    <flux:separator variant="subtle" class="my-2" />
-
-    <livewire:guru.index />
+<x-layouts.app :title="__('Guru')">
+    <div class="p-5 space-y-5 bg-gradient-to-b from-blue-100 to-blue-200 rounded-xl shadow-md">
+        <div class="border border-blue-400 rounded-xl overflow-hidden bg-white shadow-lg">
+            <livewire:guru.index />
+        </div>
+        
+    </div>
 </x-layouts.app>

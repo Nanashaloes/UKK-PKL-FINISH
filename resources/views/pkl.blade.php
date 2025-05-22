@@ -1,8 +1,8 @@
-<x-layouts.app>
-    <flux:heading size="xl" level="1">{{ __('Tabel Status Laporan PKL') }}</flux:heading>
-    <flux:subheading size="lg" class="mb-4">{{ __('Pantau status PKL disini') }}</flux:subheading>
-
-    <flux:separator variant="subtle" class="my-2" />
-
-    <livewire:pkl.index />
+<x-layouts.app :title="__('PKL')">
+    <div class="p-5 space-y-5 bg-gradient-to-b from-blue-100 to-blue-200 rounded-xl shadow-md">
+        <div class="border border-blue-400 rounded-xl overflow-hidden bg-white shadow-lg">
+            <livewire:pkl.index />
+        </div>
+        
+    </div>
 </x-layouts.app>

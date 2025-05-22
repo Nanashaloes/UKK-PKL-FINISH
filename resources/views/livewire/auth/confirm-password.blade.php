@@ -19,6 +19,13 @@
             viewable
         />
 
-        <flux:button variant="primary" type="submit" class="w-full">{{ __('Confirm') }}</flux:button>
+        <flux:button
+            variant="primary"
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white"
+        >
+            {{ __('Confirm') }}
+        </flux:button>
+
     </form>
 </div>

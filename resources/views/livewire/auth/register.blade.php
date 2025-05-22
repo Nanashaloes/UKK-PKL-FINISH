@@ -48,18 +48,24 @@
             viewable
         />
 
-        <!-- Role Selection (Teacher or Student) -->
-        <!-- <div class="flex flex-col gap-2">
+        <!-- Role Selection (Optional) -->
+        <!--
+        <div class="flex flex-col gap-2">
             <label for="role" class="font-semibold">{{ __('Select Account Type') }}</label>
             <select wire:model="role" id="role" required class="p-2 border border-gray-300 rounded">
                 <option value="">{{ __('Select Role') }}</option>
                 <option value="guru">{{ __('Teacher') }}</option>
                 <option value="siswa">{{ __('Student') }}</option>
             </select>
-        </div> -->
+        </div>
+        -->
 
         <div class="flex items-center justify-end">
-            <flux:button type="submit" variant="primary" class="w-full">
+            <flux:button
+                type="submit"
+                variant="primary"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            >
                 {{ __('Create account') }}
             </flux:button>
         </div>
@@ -67,6 +73,12 @@
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-sm text-zinc-600 dark:text-zinc-400">
         {{ __('Already have an account?') }}
-        <flux:link :href="route('login')" wire:navigate>{{ __('Log in') }}</flux:link>
+        <flux:link
+            :href="route('login')"
+            wire:navigate
+            class="text-blue-600 hover:text-blue-800"
+        >
+            {{ __('Log in') }}
+        </flux:link>
     </div>
 </div>

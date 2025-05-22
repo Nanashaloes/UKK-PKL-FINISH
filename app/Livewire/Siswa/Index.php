@@ -30,9 +30,13 @@ class Index extends Component
         $query = Siswa::query();
 
         if (!empty($this->search)) {
-            $query->where('nama', 'like', '%' . $this->search . '%')
-                  ->orWhere('nis', 'like', '%' . $this->search . '%');
+            $query->where(function($q) {
+                $q->where('nama', 'like', '%' . $this->search . '%')
+                ->orWhere('nis', 'like', '%' . $this->search . '%');
+            });
         }
+
+        $query->orderBy('nama', 'asc');
 
         $this->siswaList = $query->paginate($this->numpage);
 
@@ -40,6 +44,7 @@ class Index extends Component
             'siswaList' => $this->siswaList,
         ]);
     }
+
 
     // Method to update number of items per page
     public function updatePageSize($size)

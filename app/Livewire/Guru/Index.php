@@ -29,17 +29,23 @@ class Index extends Component
 
         // If there's a search term, filter the records
         if (!empty($this->search)) {
-            $query->where('nama', 'like', '%' . $this->search . '%')
+            $query->where(function($q) {
+                $q->where('nama', 'like', '%' . $this->search . '%')
                 ->orWhere('nip', 'like', '%' . $this->search . '%');
+            });
         }
 
-        // Get the results after applying the search filter
+        // Urutkan berdasarkan nama
+        $query->orderBy('nama', 'asc');
+
+        // Get the results after applying the search filter and ordering
         $guruList = $query->get();
 
         return view('livewire.guru.index', [
             'guruList' => $guruList, // Pass the result to the view
         ]);
     }
+
     
     public function ketGender($gender)
     {

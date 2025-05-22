@@ -49,30 +49,35 @@ class Form extends Component
     }
 
     public function save()
-    {
-        $this->validate();
+{
+    $this->validate();
 
-        $imagePath = $this->foto ? $this->foto->store('foto_industri', 'public') : $this->foto;
-
-        // Update or create industri
-        Industri::updateOrCreate(
-            ['id' => $this->id],
-            [
-                'nama' => $this->nama,
-                'bidang_usaha' => $this->bidang_usaha,
-                'alamat' => $this->alamat,
-                'kontak' => $this->kontak,
-                'email' => $this->email,
-                'guru_pembimbing' => $this->guru_pembimbing,
-                'website' => $this->website,
-                'foto' => $imagePath,
-            ]
-        );
-
-        session()->flash('message', 'Data industri berhasil disimpan.');
-
-        return redirect()->route('industri');
+    if ($this->foto && !is_string($this->foto)) {
+        // foto baru diupload
+        $imagePath = $this->foto->store('foto_industri', 'public');
+    } else {
+        // tetap pakai foto lama yang sudah string
+        $imagePath = $this->foto;
     }
+
+    Industri::updateOrCreate(
+        ['id' => $this->id],
+        [
+            'nama' => $this->nama,
+            'bidang_usaha' => $this->bidang_usaha,
+            'alamat' => $this->alamat,
+            'kontak' => $this->kontak,
+            'email' => $this->email,
+            'guru_pembimbing' => $this->guru_pembimbing,
+            'website' => $this->website,
+            'foto' => $imagePath,
+        ]
+    );
+
+    session()->flash('message', 'Data industri berhasil disimpan.');
+
+    return redirect()->route('industri');
+}
 
     public function render()
     {

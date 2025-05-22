@@ -2,15 +2,15 @@
 
 namespace App\Livewire\Siswa;
 
-use App\Models\Siswa;
 use Livewire\Component;
+use App\Models\Siswa;
 use Livewire\WithFileUploads;
 
 class Form extends Component
 {
     use WithFileUploads;
-    public $id, $nama, $nis, $gender, $alamat, $kontak, $email, $foto;
-    public $status_pkl = 'no';
+
+    public $id, $nama, $nis, $gender, $alamat, $kontak, $email, $foto, $existingFoto, $status_pkl;
 
     public function mount($id = null)
     {
@@ -23,30 +23,30 @@ class Form extends Component
             $this->alamat = $siswa->alamat;
             $this->kontak = $siswa->kontak;
             $this->email = $siswa->email;
-            $this->foto = $siswa->foto;
+            $this->existingFoto = $siswa->foto;
             $this->status_pkl = $siswa->status_pkl;
         }
     }
 
-    public function rules()
-    {
-        return [
-            'nama' => 'required|string|max:255',
-            'nis' => 'required|string|max:255|unique:siswa,nis,' . $this->id,
-            'gender' => 'required|in:L,P',
-            'alamat' => 'required|string',
-            'kontak' => 'required|string',
-            'email' => 'required|email|unique:siswa,email,' . $this->id,
-            'foto' => 'nullable',
-            'status_pkl' => 'required',
-        ];
-    }
-
     public function save()
     {
-        $this->validate();
+        $this->validate([
+            'nama' => 'required|string',
+            'nis' => 'required|string',
+            'gender' => 'required|string',
+            'alamat' => 'required|string',
+            'kontak' => 'required|string',
+            'email' => 'required|email',
+            'foto' => $this->id ? 'nullable|image|max:1024' : 'required|image|max:1024',
+            'status_pkl' => 'required|boolean',
+        ]);
 
-        $imagePath = $this->foto->store('foto_siswa', 'public');
+        $fotoPath = null;
+        if ($this->foto) {
+            $fotoPath = $this->foto->store('foto_siswa', 'public');
+        } elseif ($this->existingFoto ?? false) {
+            $fotoPath = $this->existingFoto;
+        }
 
         Siswa::updateOrCreate(
             ['id' => $this->id],
@@ -57,13 +57,12 @@ class Form extends Component
                 'alamat' => $this->alamat,
                 'kontak' => $this->kontak,
                 'email' => $this->email,
-                'foto' => $imagePath,
-                'status_pkl' => $this->status_pkl,
+                'foto' => $fotoPath,
+                'status_pkl' => $this->status_pkl ? 1 : 0,
             ]
         );
 
         session()->flash('message', 'Data siswa berhasil disimpan.');
-
         return redirect()->route('siswa');
     }
 

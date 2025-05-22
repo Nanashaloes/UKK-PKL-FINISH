@@ -33,7 +33,7 @@ class SiswaSeeder extends Seeder
             ['nama' => 'DIMAS BAGUS AHMAD NURYASIN', 'nis' => '20404', 'gender' => 'L', 'alamat' => 'Alamat siswa', 'kontak' => '1234567806', 'email' => 'dimas@example.com', 'status_pkl' => false],
             ['nama' => 'EKALAYA KEMAL', 'nis' => '20405', 'gender' => 'L', 'alamat' => 'Alamat siswa', 'kontak' => '1234567807', 'email' => 'ekalaya@example.com', 'status_pkl' => false],
             ['nama' => 'FADLY ATHALLA FAWWAZ', 'nis' => '20406', 'gender' => 'L', 'alamat' => 'Alamat siswa', 'kontak' => '1234567808', 'email' => 'fadly@example.com', 'status_pkl' => false],
-            ['nama' => 'FARADILLA SYIFA NUR’AINI', 'nis' => '20407', 'gender' => 'P', 'alamat' => 'Alamat siswa', 'kontak' => '1234567809', 'email' => 'faradilla@example.com', 'status_pkl' => false],
+            ['nama' => 'FARADILLA SYIFA NURAINI', 'nis' => '20407', 'gender' => 'P', 'alamat' => 'Alamat siswa', 'kontak' => '1234567809', 'email' => 'faradilla@example.com', 'status_pkl' => false],
             ['nama' => 'FARCHA AMALIA NUGRAHAINI', 'nis' => '20408', 'gender' => 'P', 'alamat' => 'Alamat siswa', 'kontak' => '1234567810', 'email' => 'farcha@example.com', 'status_pkl' => false],
             ['nama' => 'FAUZAN ADZIMA KURNIAWAN', 'nis' => '20409', 'gender' => 'L', 'alamat' => 'Alamat siswa', 'kontak' => '1234567811', 'email' => 'fauzan@example.com', 'status_pkl' => false],
             ['nama' => 'GABRIEL POSSENTI GENTA BAHANA NAGARI', 'nis' => '20410', 'gender' => 'L', 'alamat' => 'Alamat siswa', 'kontak' => '1234567812', 'email' => 'gabriel@example.com', 'status_pkl' => false],
