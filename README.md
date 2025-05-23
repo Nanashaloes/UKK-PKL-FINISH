@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aplikasi PKL - Manajemen Praktik Kerja Lapangan
 
 Aplikasi ini dibangun menggunakan Laravel 12, Livewire Starterkits, dan Filament untuk membantu manajemen data Praktik Kerja Lapangan (PKL) di lingkungan sekolah atau kampus. Fitur utama termasuk pengelolaan data siswa, pembimbing, instansi, dan laporan PKL, serta sistem otorisasi berbasis peran menggunakan Filament Shield.
@@ -79,3 +80,7 @@ Kontribusi selalu diterima! Boleh fork dan pull request, atau lebih aman git clo
 Project ini memiliki lisensi
 [MIT](https://choosealicense.com/licenses/mit/).
 
+=======
+# UKK-PKL-FINISH
+Project ukk Ilham Putra Mahendra
+>>>>>>> 77f3e83d8866426f803a3926b482e2a4924c0bc0
