@@ -12,18 +12,19 @@ class Index extends Component
 
     public $numpage = 10;
     public $search;
+    public $deleteId= null;
 
     public function updatingSearch()
     {
         $this->resetPage();
     }
 
-    public function delete($id)
+   public function delete($id)
     {
         Siswa::findOrFail($id)->delete();
         session()->flash('message', 'Data siswa berhasil dihapus.');
+        $this->deleteId = null; // Tutup modal setelah delete
     }
-
     // Method for handling render
     public function render()
     {
@@ -72,5 +73,9 @@ class Index extends Component
         } else {
             return 'Status tidak diketahui';
         }
+    }
+    public function confirmDelete($id)
+    {
+        $this->deleteId = $id;
     }
 }

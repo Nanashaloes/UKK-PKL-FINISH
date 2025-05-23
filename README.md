@@ -25,7 +25,7 @@ Livewire Starterkit menggunakan NodeJS untuk development. Jadi perhatikan ya... 
 
 ```bash
 git clone -b main --single-branch https://github.com/Nanashaloes/UKK.git
-cd project_pkl_fullstack
+cd UKK
 ```
 Clone yang branch  main --> sudah teruji.
 
