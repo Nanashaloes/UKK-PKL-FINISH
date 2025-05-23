@@ -25,7 +25,7 @@ Livewire Starterkit menggunakan NodeJS untuk development. Jadi perhatikan ya... 
 1. Clone repositori:
 
 ```bash
-git clone -b main --single-branch https://github.com/Nanashaloes/UKK.git
+git clone -b main --single-branch https://github.com/Nanashaloes/UKK-PKL-FINISH.git
 cd UKK
 ```
 Clone yang branch  main --> sudah teruji.
@@ -36,9 +36,9 @@ composer install
 npm install
 ```
 
-3. Copy file environment dan konfigurasi:
+3. konfigurasi file .env:
 ```bash
-cp .env.example .env
+masuk ke file .env
 php artisan key:generate
 ```
 
